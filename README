@@ -3,5 +3,7 @@
 # Included are :
 #
 # *device tree
-# *prebuilt kernel image*
+# *prebuilt boot image with fixed harmony kernel and ramdisk
+# ^flash either with APX (nvflash) or make a blob out of it
 #
+# From a 16 year old german developer to all people in the world !
