@@ -140,7 +140,8 @@ service wpa_supplicant /system/bin/wpa_supplicant \
     disabled
     oneshot
 
-service dhcpcd_wlan0 /system/bin/dhcpcd -ABKL
+# was -ABKL
+service dhcpcd_wlan0 /system/bin/dhcpcd -aABKL
     class main
     disabled
     oneshot
@@ -150,12 +151,14 @@ service dhcpcd_p2p /system/bin/dhcpcd -aABKL
     disabled
     oneshot
 
-service dhcpcd_bnep0 /system/bin/dhcpcd -ABKL
+# was -ABKL
+service dhcpcd_bnep0 /system/bin/dhcpcd -aABKL
     class main
     disabled
     oneshot
 
-service dhcpcd_eth0 /system/bin/dhcpcd -ABKL -f/system/etc/dhcpcd/dhcpcd.conf
+# was -ABKL
+service dhcpcd_eth0 /system/bin/dhcpcd -aABKL -f/system/etc/dhcpcd/dhcpcd.conf
     class main
     disabled
     oneshot
