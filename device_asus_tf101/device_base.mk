@@ -216,6 +216,10 @@ PRODUCT_PACKAGES := \
     audio.primary.tegra \
     audio.a2dp.default \
     audio.usb.default \
+    libaudioutils \
+    tinymix \
+    tinyplay \
+    tinyrec \
     librs_jni \
     make_ext4fs \
     l2ping \
