@@ -221,4 +221,10 @@
 
     <!-- Boolean indicating whether the device has a dock battery -->
     <!-- <bool name="config_hasDockBattery">true</bool> -->
+
+    <!-- Package name providing network location support. -->
+    <string name="config_networkLocationProviderPackageName" translatable="false">com.google.android.location</string>
+
+    <!-- Package name providing geocoder API support. -->
+    <string name="config_geocodeProviderPackageName" translatable="false">com.google.android.location</string>
 </resources>

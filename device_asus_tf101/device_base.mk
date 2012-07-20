@@ -97,6 +97,13 @@ PRODUCT_COPY_FILES := \
     device/asus/tf101/lib/libsensors.base.so:system/lib/libsensors.base.so \
     device/asus/tf101/lib/libsensors.mpl.so:system/lib/libsensors.mpl.so
 
+# OMX Libmedia Libraries
+PRODUCT_COPY_FILES += \
+    device/asus/tf101/lib/libmedia/libmedia.so:system/lib/libmedia.so \
+    device/asus/tf101/lib/libmedia/libmedia_jni.so:system/lib/libmedia_jni.so \
+    device/asus/tf101/lib/libmedia/libmedia_native.so:system/lib/libmedia_native.so \
+    device/asus/tf101/lib/libmedia/libmediaplayerservice.so:system/lib/libmediaplayerservice.so
+
 # Bluetooth configuration files
 PRODUCT_COPY_FILES += \
     device/asus/tf101/etc/firmware/bcm4329.hcd:system/etc/firmware/bcm4329.hcd \
