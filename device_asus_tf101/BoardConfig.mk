@@ -56,11 +56,7 @@ BOARD_USES_HGL := true
 BOARD_USES_OVERLAY := true
 USE_OPENGL_RENDERER := true
 
-#TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
-#TARGET_RECOVERY_UI_LIB := librecovery_ui_tf101
-
-# device-specific extensions to the updater binary
-#TARGET_RECOVERY_UPDATER_LIBS += librecovery_updater_tf101
+# Specify block sizes for our device
 TARGET_RELEASETOOLS_EXTENSIONS := $(LOCAL_PATH)
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
@@ -112,9 +108,12 @@ NEED_WORKAROUND_CORTEX_A9_745320 := true
 BOARD_MALLOC_ALIGNMENT := 16
 TARGET_EXTRA_CFLAGS := $(call cc-option,-mtune=cortex-a9) $(call cc-option,-mcpu=cortex-a9)
 
-# Cortex A9 optimizations for A7
+# [0] Linaro enhancements are required for the next two :
+
+# Turn on Cortex A9 Optimizations for A7
+TARGET_EXTRA_CFLAGS := $(call cc-option,-mtune=cortex-a9) $(call cc-option,-mcpu=cortex-a9)
+
+# Use Cortex A9 optimizations for A7
 USE_ALL_OPTIMIZED_STRING_FUNCS := true
 
-#define to use all of the Linaro Cortex-A9 optimized string funcs,
-#instead of subset known to work on all machines
-USE_ALL_OPTIMIZED_STRING_FUNCS := true
+# [1] Linaro end

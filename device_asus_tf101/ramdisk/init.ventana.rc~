@@ -115,8 +115,8 @@ on boot
     chown root system /sys/class/gpio/gpio203/value
     chmod 0664 /sys/class/gpio/gpio203/value
 
-#NTFS exFAT support
-    insmod /sbin/texfat.ko
+#NTFS exFAT support || Disabled for now, already enabled in Harmony Kernel
+#    insmod /sbin/texfat.ko
 
 # RIL
 # Define TCP buffer sizes for hspa networks
@@ -132,7 +132,7 @@ service wifimacwriter /system/bin/wifimacwriter
     oneshot
 
 service wpa_supplicant /system/bin/wpa_supplicant \
-    -Dnl80211 -iwlan0 -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf -e/data/misc/wifi/entropy.bin
+    -Dnl80211 -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf -e/data/misc/wifi/entropy.bin
 #   we will start as root and wpa_supplicant will switch to user wifi
 #   after setting up the capabilities required for WEXT
 #   user wifi
