@@ -1,18 +1,18 @@
 import init.ventana.usb.rc
-import init.ventana.keyboard.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
 
     export EXTERNAL_STORAGE /storage/sdcard0
+    export SECONDARY_STORAGE /storage/sdcard1
     mkdir /storage 0050 system sdcard_r
     mkdir /storage/sdcard0 0000 system system
     # for backwards compatibility
     symlink /storage/sdcard0 /sdcard
     symlink /storage/sdcard0 /mnt/sdcard
 
-    # create directory for mounting usb drives
-    mkdir /Removable 0755 media_rw media_rw
+    # create directory for mounting usb drives -- not needed anymore. We use /storage from now on
+    # mkdir /Removable 0755 media_rw media_rw
 
 on fs
     mount_all /fstab.ventana
@@ -20,10 +20,10 @@ on fs
     mount tmpfs tmpfs /Removable mode=0755,gid=1000
 
     # temp fix for external storage mounts
-    mkdir /Removable/MicroSD 0666 system system
-    mkdir /Removable/SD 0666 system system
-    mkdir /Removable/USBdisk1 0666 system system
-    mkdir /Removable/USBdisk2 0666 system system
+    mkdir /storage/sdcard1 0666 system system
+    mkdir /storage/sdcard2 0666 system system
+    mkdir /storage/usbdisk0 0666 system system
+    mkdir /storage/usbdisk1 0666 system system
 
 on post-fs-data
     mkdir /data/misc/wifi 0770 wifi wifi
@@ -101,12 +101,10 @@ on boot
 
 #GPS
     mkdir /data/gps
-    chown system system /data/gps
+    chown gps system /data/gps
     chmod 770 /data/gps
-    chown root system /dev/ttyHS1
+    chown gps /dev/ttyHS1
     chmod 0664 /dev/ttyHS1
-    chown root system /dev/socket/gps
-    chmod 0666 /dev/socket/gps
 
 # GPS init
     write /sys/class/gpio/export 203
@@ -115,8 +113,8 @@ on boot
     chown root system /sys/class/gpio/gpio203/value
     chmod 0664 /sys/class/gpio/gpio203/value
 
-#NTFS exFAT support -- Disabled for now, already enabled in Harmony Kernel
-#    insmod /sbin/texfat.ko
+#NTFS exFAT support -- Might need fixes
+    insmod /sbin/texfat.ko
 
 # RIL
 # Define TCP buffer sizes for hspa networks
@@ -212,7 +210,7 @@ service hciattach /system/bin/brcm_patchram_plus --enable_hci --scopcm=0,2,0,0,0
 # Start GPS daemon
   on boot
   service gps-daemon /system/bin/glgps -c /system/etc/gps/gpsconfig.xml
-  user root
+  user gps
   group root 
   class late_start
 

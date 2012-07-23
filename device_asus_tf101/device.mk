@@ -15,7 +15,3 @@
 #
 
 $(call inherit-product, $(LOCAL_PATH)/device_base.mk)
-
-# Add commands which are tf101 specific after here
-$(call inherit-product-if-exists, vendor/eos/common.mk)
-$(call inherit-product-if-exists, vendor/eos/tablets/common.mk)

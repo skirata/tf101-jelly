@@ -99,11 +99,20 @@
     <!-- The number of degrees to rotate the display when the keyboard is open. -->
     <integer name="config_lidOpenRotation">0</integer>
 
-    <!-- Fix the screen_off profile while lid is closed -->
-    <integer name="config_lidKeyboardAccessibility">2</integer>
+    <!-- Fix the screen_off profile while lid is closed (0=false, 1=true while lid open, 2=always true)-->
+    <integer name="config_lidKeyboardAccessibility">1</integer>
 
-    <!-- Add CRT-OFF animation, HIGHLY EXPERIMENTAL -->
-    <bool name="config_screenOffAnimation">true</bool>
+    <!-- Define NavBar access when lid is closed (0=false, 1=true while lid open, 2=always true)-->
+    <integer name="config_lidNavigationAccessibility">1</integer>
+
+    <!-- Fix lid while sleeping -->
+    <bool name="config_lidControlsSleep">true</bool>
+
+    <!-- Touchpad inbound -->
+    <!--bool name="config_hasTouchpad">true</bool -->
+
+    <!-- Disable CRT-OFF animation -->
+    <!--bool name="config_screenOffAnimation">false</bool -->
 
     <!-- Array of light sensor LUX values to define our levels for auto backlight brightness support.
          The N entries of this array define N + 1 zones as follows:
@@ -226,11 +235,11 @@
     <dimen name="config_viewConfigurationTouchSlop">8dp</dimen>
 
     <!-- Boolean indicating whether the device has a dock battery -->
-    <bool name="config_hasDockBattery">true</bool>
+    <!-- bool name="config_hasDockBattery">true</bool -->
 
     <!-- Package name providing network location support. -->
-    <string name="config_networkLocationProvider" translatable="false">com.google.android.location.NetworkLocationProvider</string>
+    <string name="config_networkLocationProviderPackageName" translatable="false">com.google.android.location</string>
 
     <!-- Package name providing geocoder API support. -->
-    <string name="config_geocodeProvider" translatable="false">com.google.android.location.GeocodeProvider</string>
+    <string name="config_geocodeProviderPackageName" translatable="false">com.google.android.location</string>
 </resources>

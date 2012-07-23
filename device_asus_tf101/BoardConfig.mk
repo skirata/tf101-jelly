@@ -105,8 +105,8 @@ TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/asus/tf101/releasetools/tf10
 # Avoid the generation of ldrcc instructions
 NEED_WORKAROUND_CORTEX_A9_745320 := true
 
-# Set Malloc value to 16
 BOARD_MALLOC_ALIGNMENT := 16
+TARGET_EXTRA_CFLAGS := $(call cc-option,-mtune=cortex-a9) $(call cc-option,-mcpu=cortex-a9)
 
 # [0] Linaro enhancements are required for the next two :
 
@@ -117,3 +117,6 @@ TARGET_EXTRA_CFLAGS := $(call cc-option,-mtune=cortex-a9) $(call cc-option,-mcpu
 USE_ALL_OPTIMIZED_STRING_FUNCS := true
 
 # [1] Linaro end
+
+# Lid hack
+TARGET_USES_TF101_LID_HACK := true
